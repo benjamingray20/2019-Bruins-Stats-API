@@ -1,0 +1,32 @@
+<html>
+
+<head>
+  <title>Bruins Stats API</title>
+  <link rel="stylesheet" href="./public/css/index.css" />
+</head>
+
+<body>
+  <header>
+    <div class='name'>Boston Bruin 2019 Stats API</div>
+  </header>
+
+  <table>
+    <tr>
+      <th> <a class='link' href="./getStats.html">Get/stats</a> </th>
+
+      <th> <a class='link' href="./getStatsByPlayer.html">GET/stats/{player}</a> </th>
+
+      <th> <a class='link' href="./postStats.html">POST/stats</a></th>
+
+      <th><a class='link' href="./deleteStatsByPlayer.html">DELETE/stats/{player}</a></th>
+    </tr>
+  </table>
+  <p class="Route">
+    Method: GET/stats/{player}
+    <br> Route: https://localhost:1111/stats/{player}
+    <br> Headers: Authorization: YOUR_API_KEY_HERE
+    <br> Description: Returns players matching given route
+  </p>
+</body>
+
+</html>
