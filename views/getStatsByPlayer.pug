@@ -1,0 +1,22 @@
+html
+  head
+    title Bruins Stats API
+    link(rel='stylesheet', href='./public/css/index.css')
+  body
+    header
+      .name Boston Bruin 2019 Stats API
+    table
+        tr
+          th
+            a.link(href='./getStats.html') Get/stats
+          th
+            a.link(href='./getStatsByPlayer.html') GET/stats/{player}
+          th
+            a.link(href='./postStats.html') POST/stats
+          th
+            a.link(href='./deleteStatsByPlayer.html') DELETE/stats/{player}
+    p.Route
+      Method: GET/stats/{player}
+      br Route: https://localhost:1111/stats/{player}
+      br Headers: Authorization: YOUR_API_KEY_HERE
+      br Description: Retrieves the player(s) associated with the provided name from the database
