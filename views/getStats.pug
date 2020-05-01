@@ -15,10 +15,7 @@ html
             a.link(href=' /postStats') POST/stats
           th
             a.link(href=' /deleteStatsByPlayer') DELETE/stats/{player}
-    p.Route Method: DELETE/stats/{player}
-      <br> Route: https://localhost:1111/stats/{player}
+    p.Route Method: GET/stats/
+      <br> Route: https://localhost:1111/stats
       <br> Headers: Authorization: YOUR_API_KEY_HERE
-      <br> Description: Deletes the player associated with the given name from the database.
-  
-    
-  
+      <br> Description: Returns all players and stats from the database.
