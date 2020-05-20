@@ -1,21 +1,43 @@
 html
   head
-    title Bruins Stats API
+    title 2019 Stanley Cup Finals Stats API
     link(rel='stylesheet', href='/css/styles.css')
   body
     header
-      .name Boston Bruin 2019 Stats API
+      .header 2019 Stanley Cup Finals Stats API
     table
         tr
+          td
+            .blank
           th
-            a.link(href=' /stats') Get/stats
+            text Get/teams
           th
-            a.link(href=' /statsByPlayer') GET/stats/{player}
+            text GET/player/{lastName}
           th
-            a.link(href=' /postStats') POST/stats
+            text POST/player
+            
+        tr
           th
-            a.link(href=' /deleteStatsByPlayer') DELETE/stats/{player}
-    p.Route HELLO <br> Welcome to the 2019 Bruins Stats API. Please click your route for details.
+            text Route:
+          td https://localhost:1111/teams
+          td https://localhost:1111/players/{player}
+          td https://localhost:1111/players/         
+
+        tr
+          th
+            text Headers:
+          td Authorization: YOUR_API_KEY_HERE
+          td Authorization: YOUR_API_KEY_HERE
+          td Authorization: YOUR_API_KEY_HERE
+
+        tr
+          th
+            text Description:   
+          td Returns all Teams with its coaches and players.
+          td Retrieves the player(s) associated with the provided last name and their stats. 
+          td Accepts new player details and saves them as a new player, returning the saved record with a 201 status.
+
+    p.hello HELLO <br> Welcome to the 2019 Stanley Cup Finals Stats API.
        
   
     

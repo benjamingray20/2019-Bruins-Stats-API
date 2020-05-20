@@ -6,7 +6,7 @@ body {
   margin: 0;
   min-height: 100vh;
 }
-.name{
+.header {
   text-align: center;
   position: relative;
   bottom: -30px;
@@ -17,56 +17,32 @@ body {
   cursor: pointer;
   color: #fcb514;
 }
-
-.name:link{
-  color: black;
-  text-decoration: none;
-}
-.name:visited{
-  color: black;
-}
-
-.route {
+.hello {
   margin: 0 auto;
   margin-top: 100px;
   width: 50%;
-  text-align: center;
-  
+  text-align: center
 }
-
 table {
   border-collapse: separate;
   padding: 12px;
   width: 52%;
-  margin: 0 340px;
-  margin-top: 100px;
+  margin: 0 315px;
+  margin-top: 142px;
   border-spacing: 10px;
+  border-collapse: collapse;
 }
-
-th{
+th {
   background-color: #fcb514;
-  border: 2px solid #f2f0f1;
+  border: 2px solid black;
   padding: 10px;
   text-align: center;
   font-size: 12xpx;
-  cursor: pointer;       
 }
-th a {
-  display: block;
+td {
+  border: 2px solid black;
+  text-align: center;
 }
-
-.link:link {
-  color: black;
-  text-decoration: none;
-}
-
-.link:visited{
-  color: black;
-}
-th:hover{
-  background-color: #838f8f;
-}
-
 @font-face {
   font-family: d-din;
   src: url(../portfolioSite/fonts/D-din.otf)

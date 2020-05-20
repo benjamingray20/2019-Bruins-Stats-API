@@ -1,4 +1,7 @@
 const express = require('express')
+const { getAllTeams, getTeamsWithPlayers } = require('./controllers/teams')
+const { getAllPlayers, getPlayerByLastName } = require('./controllers/players')
+
 
 const app = express()
 
@@ -9,26 +12,20 @@ app.get('/', (request, response) => {
   return response.render('index')
 })
 
-app.get('/stats', (request, response) => {
-  return response.render('getStats')
-})
+app.get('/teams', getAllTeams)
 
-app.get('/statsByPlayer', (request, response) => {
-  return response.render('getStatsByPlayer')
-})
+app.get('/:team', getTeamsWithPlayers)
 
-app.get('/postStats', (request, response) => {
-  return response.render('postStats')
-})
+app.get('/players', getAllPlayers)
 
-app.get('/deleteStatsByPlayer', (request, response) => {
-  return response.render('deleteStatsByPlayer')
-})
+app.get('/players/:lastName', getPlayerByLastName)
+
+app.get('/postPlayer')
 
 app.all('*'), (request, response) => {
   return response.sendStatus(404)
 }
 
 app.listen(1111, () => {
-  console.log('Listening on port 1111...') //eslint-disable-line no-console
+  console.log('Listening on port 1111...') // eslint-disable-line no-console
 })
