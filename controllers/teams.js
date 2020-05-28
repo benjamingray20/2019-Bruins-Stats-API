@@ -2,10 +2,6 @@ const models = require('../models')
 
 const getAllTeams = async (request, response) => {
   const teams = await models.teams.findAll({
-
-    include: [
-      { model: models.coaches }
-    ]
   })
 
   return teams
@@ -13,21 +9,33 @@ const getAllTeams = async (request, response) => {
     : response.sendStatus(404)
 }
 
-const getTeamsWithPlayers = async (request, response) => {
-  const { input } = request.params
-  const teams = await models.teams.findOne({
-    where: {
-      team: { [models.Op.like]: `%${input}%` }
-    },
+const getTeamsWithPlayersAndStats = async (request, response) => {
+  try {
+    const { team } = request.params
+    const teams = await models.teams.findOne({
+      where: {
+        [models.Op.or]: [
+          { location: { [models.Op.like]: `%${team}%` } },
+          { mascot: { [models.Op.like]: `%${team}%` } }
+        ]
+      },
+      include: [
+        {
+          model: models.players,
+          include: [
+            { model: models.skaterStats },
+            { model: models.goalieStats }
+          ]
+        }
+      ]
+    })
 
-    include: [
-      { model: models.players }
-    ]
-  })
-
-  return teams
-    ? response.send(teams)
-    : response.sendStatus(404)
+    return teams
+      ? response.send(teams)
+      : response.sendStatus(404)
+  } catch (error) {
+    return response.status(500).send('Unable to retrieve team, please try again')
+  }
 }
 
-module.exports = { getAllTeams, getTeamsWithPlayers }
+module.exports = { getAllTeams, getTeamsWithPlayersAndStats }

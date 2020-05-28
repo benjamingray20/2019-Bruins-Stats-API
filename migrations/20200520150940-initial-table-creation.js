@@ -55,7 +55,6 @@ module.exports = {
       assists: { type: Sequelize.INTEGER },
       points: { type: Sequelize.INTEGER },
       plusMinus: { type: Sequelize.INTEGER },
-      ppp: { type: Sequelize.INTEGER },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
         type: Sequelize.DATE,
@@ -69,8 +68,8 @@ module.exports = {
       gamesPlayed: { type: Sequelize.STRING, allowNull: false },
       wins: { type: Sequelize.INTEGER },
       losses: { type: Sequelize.INTEGER },
-      GAA: { type: Sequelize.INTEGER },
-      savePercentage: { type: Sequelize.INTEGER },
+      GAA: { type: Sequelize.DECIMAL(3, 2) },
+      savePercentage: { type: Sequelize.DECIMAL(3, 3) },
       shutouts: { type: Sequelize.INTEGER },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
@@ -90,12 +89,12 @@ module.exports = {
       return queryInterface.dropTable('users');
     */
 
-    await queryInterface.dropTable('teams')
-    await queryInterface.dropTable('coaches')
-    await queryInterface.dropTable('players')
     await queryInterface.dropTable('goalieStats')
+    await queryInterface.dropTable('skaterStats')
+    await queryInterface.dropTable('players')
+    await queryInterface.dropTable('coaches')
 
 
-    return queryInterface.dropTable('skaterStats')
+    return queryInterface.dropTable('teams')
   }
 }

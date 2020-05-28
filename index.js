@@ -1,6 +1,9 @@
 const express = require('express')
-const { getAllTeams, getTeamsWithPlayers } = require('./controllers/teams')
-const { getAllPlayers, getPlayerByLastName } = require('./controllers/players')
+const bodyParser = require('body-parser')
+
+const { getAllTeams, getTeamsWithPlayersAndStats } = require('./controllers/teams')
+const { getAllPlayers, getPlayerByLastName, saveNewPlayer } = require('./controllers/players')
+const { getAllCoaches, getCoachByLastName } = require('./controllers/coaches')
 
 
 const app = express()
@@ -13,14 +16,14 @@ app.get('/', (request, response) => {
 })
 
 app.get('/teams', getAllTeams)
-
-app.get('/:team', getTeamsWithPlayers)
+app.get('/teams/:team', getTeamsWithPlayersAndStats)
 
 app.get('/players', getAllPlayers)
-
 app.get('/players/:lastName', getPlayerByLastName)
+app.post('/players', bodyParser.json(), saveNewPlayer)
 
-app.get('/postPlayer')
+app.get('/coaches/', getAllCoaches)
+app.get('/coaches/:lastName', getCoachByLastName)
 
 app.all('*'), (request, response) => {
   return response.sendStatus(404)

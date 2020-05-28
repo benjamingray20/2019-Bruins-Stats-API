@@ -6,8 +6,6 @@ const skaterStats = (connection, Sequelize, players) => {
     assists: { type: Sequelize.INTEGER },
     points: { type: Sequelize.INTEGER },
     plusMinus: { type: Sequelize.INTEGER },
-    ppp: { type: Sequelize.INTEGER },
-
   }, {
     defaultScope: {
       attributes: { exclude: ['deletedAt'] }

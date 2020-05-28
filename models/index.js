@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const allConfigs = require('../configs/sequelize')
+const allConfigs = require('../config/sequelize')
 const teamsModel = require('./teams')
 const coachesModel = require('./coaches')
 const playersModel = require('./players')
@@ -20,14 +20,17 @@ const players = playersModel(connection, Sequelize, teams)
 const skaterStats = skaterStatsModel(connection, Sequelize, players)
 const goalieStats = goalieStatsModel(connection, Sequelize, players)
 
-
 players.belongsTo(teams)
 teams.hasMany(players)
 
-coaches.hasOne(teams)
+teams.hasOne(coaches)
+coaches.belongsTo(teams)
 
-skaterStats.hasOne(players)
-goalieStats.hasOne(players)
+skaterStats.belongsTo(players)
+players.hasOne(skaterStats)
+
+players.hasOne(goalieStats)
+goalieStats.belongsTo(players)
 
 module.exports = {
   teams,

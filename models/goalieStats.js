@@ -4,8 +4,8 @@ const goalieStats = (connection, Sequelize, players) => {
     gamesPlayed: { type: Sequelize.STRING, allowNull: false },
     wins: { type: Sequelize.INTEGER },
     losses: { type: Sequelize.INTEGER },
-    GAA: { type: Sequelize.INTEGER },
-    savePercentage: { type: Sequelize.INTEGER },
+    GAA: { type: Sequelize.DECIMAL(3, 2) },
+    savePercentage: { type: Sequelize.DECIMAL(3, 3) },
     shutouts: { type: Sequelize.INTEGER },
 
   }, {

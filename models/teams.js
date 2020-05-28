@@ -4,7 +4,6 @@ const teams = (connection, Sequelize) => {
     location: { type: Sequelize.STRING, allowNull: false },
     mascot: { type: Sequelize.STRING, allowNull: false },
     league: { type: Sequelize.ENUM('East', 'West'), allowNull: false },
-
   }, {
     defaultScope: {
       attributes: { exclude: ['deletedAt'] }
